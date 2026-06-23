@@ -4,6 +4,8 @@ import { useState } from "react";
 
 export function Input({
     placeholder,
+    numberOfLines = 1,
+    keyboardType = 'default',
      value, 
      onChangeText, 
      secureTextEntry = false,
@@ -14,11 +16,12 @@ export function Input({
          <TextInput
                   style={styles.input}
                   placeholder={placeholder}
-                  numberOfLines={1}
+                  numberOfLines={numberOfLines}
                   editable={true}
                   value={value}
                   secureTextEntry={secureTextEntry}
                   onChangeText={onChangeText}
+                  keyboardType={keyboardType}
                 />
     )
 }

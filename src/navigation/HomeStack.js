@@ -4,6 +4,7 @@ import LoginScreen from '../screens/loginScreen';
 import SignInScreen from '../screens/signinScreen';
 import HomeScreen from '../screens/HomeScreen';
 import StartScreen from '../screens/StartScreen';
+import CreateAdScreen from '../screens/CreateAdScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -30,6 +31,11 @@ export function HomeStack(){
                  <Stack.Screen
                     name={"Home"}
                     component={HomeScreen}
+                />
+
+                <Stack.Screen
+                    name={"CreateAd"}
+                    component={CreateAdScreen}
                 />
             </Stack.Navigator>
         </NavigationContainer>

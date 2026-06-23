@@ -1,12 +1,12 @@
-import {Text, View}  from 'react-native';
-import {useSelector, useDispatch}                    from 'react-redux'
-import {useState}                                    from 'react'
-import { styles }                                    from '../../style/styles';
-import { setEmail, setUid}                  from '../redux/userSlice'
-import { login }                                     from '../services/authService';
-import { useNavigation}                              from '@react-navigation/native';
-import {Input}                                         from '../../components/input';
-import Navibutton                                    from '../../components/Navibutton';
+import {Text, View}               from 'react-native';
+import {useSelector, useDispatch} from 'react-redux'
+import {useState}                 from 'react'
+import { styles }                 from '../../style/styles';
+import { setEmail, setUid}        from '../redux/userSlice'
+import { login }                  from '../services/authService';
+import { useNavigation}           from '@react-navigation/native';
+import {Input}                    from '../../components/input';
+import Navibutton                 from '../../components/Navibutton';
 
 
 export default function LoginScreen({navigation}) {
