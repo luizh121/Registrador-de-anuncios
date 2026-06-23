@@ -3,7 +3,6 @@ import {useState}                                    from 'react'
 import { styles }                                    from '../../style/styles';
 import {useSelector, useDispatch}                    from 'react-redux'
 import {setUid, setEmail}                            from '../redux/userSlice'
-import { createUserWithEmailAndPassword }            from 'firebase/auth';
 import { auth }                                      from '../services/authService';
 import { cadastrar }                                 from '../services/authService';
 import { useNavigation }                             from '@react-navigation/native';
