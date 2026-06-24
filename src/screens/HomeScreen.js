@@ -3,7 +3,7 @@ import { styles }               from '../../style/styles';
 import { useEffect, useState }  from 'react';
 import { useNavigation}         from '@react-navigation/native';
 import Navibutton               from '../../components/Navibutton';
-import {collection, onSnapshot} from "firebase/firestore";
+import {collection, onSnapshot, query, orderBy} from "firebase/firestore";
 import { db }                   from '../../firebaseConfig';
 import Card                     from '../../components/Card';
 import { setUid, setEmail, setUsername} from '../redux/userSlice';
@@ -12,18 +12,22 @@ import { setUid, setEmail, setUsername} from '../redux/userSlice';
 export default function HomeScreen({navigation}) {
 
   const [anuncios, setAnuncios] = useState([]);
+  const q = query(
+    collection(db,"anuncios"), orderBy("createdAt", "desc")
+  );
 
 
   
   useEffect( () => {
     const printarAnuncio = onSnapshot(
+      q,
       collection(db, "anuncios"), 
       (snapshot) => {
         const lista = [];
         
         snapshot.forEach( (doc) =>{
           lista.push( {
-            uid: doc.id,
+            id: doc.id,
             ...doc.data(),
           });
         });
@@ -42,7 +46,7 @@ export default function HomeScreen({navigation}) {
    
         <FlatList
           data={anuncios}
-          keyExtractor={(item) => item.uid}
+          keyExtractor={(item) => item.id}
           renderItem={({item}) => (
             <Card
               title={item.titulo}

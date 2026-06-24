@@ -20,7 +20,6 @@ export const styles = StyleSheet.create({
   },
   button:{
     padding: 5,
-    borderRadius: 50,
   },
   titulo:{
     textAlign: 'center',
@@ -87,4 +86,16 @@ export const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
   },
+
+  profile:{
+   paddingLeft: 257
+  },
+
+  profileImg:{
+    width: 40,
+    height: 40,
+    borderRadius: 30,
+    alignSelf: 'center',
+
+  }
 });

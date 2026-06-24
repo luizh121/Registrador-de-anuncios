@@ -11,13 +11,12 @@ export default function Card({
 }){
 
     const formatDate = (timestamp) => {
-  if (!timestamp?.seconds) return "";
+        if (!timestamp?.seconds) return "";
+        return new Date(timestamp.seconds * 1000).toLocaleString("pt-BR");
+    };
 
-  return new Date(timestamp.seconds * 1000)
-    .toLocaleString("pt-BR");
-};
     return(
-         <View style={styles.card}>
+        <View style={styles.card}>
             <Text style={styles.cardTitle}>{title}</Text>
             <Text numberOfLines={3} style={styles.cardText}>{description}</Text>
             <Text style={styles.cardUser}>{user}</Text>
@@ -27,7 +26,7 @@ export default function Card({
                 <Text style={styles.cardPrice}>R${price},00</Text> 
                 <Navibutton title= "Adicionar ao carrinho"/>
             </View>
-    </View>
+        </View>
       
     );
 }
