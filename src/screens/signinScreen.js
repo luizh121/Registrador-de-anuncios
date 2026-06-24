@@ -15,6 +15,8 @@ export default function SignInScreen({navigation}){
      const [inputEmail, setInputEmail] = useState('');
      const [inputSenha, setInputSenha] = useState('');
      const [aviso, setAviso] = useState('');
+    
+     const dispatch = useDispatch();
 
 
      async function fazerCadastro() {
@@ -23,9 +25,21 @@ export default function SignInScreen({navigation}){
             setAviso("Preencha ambos os campos.");
         }else{
              try{
-                await cadastrar(inputEmail, inputSenha);
-                setAviso("");
-                console.log("Sucesso");
+               const userCredential = await cadastrar(inputEmail, inputSenha);
+               setAviso("");
+               
+                //guarda email após o cadastro        
+                dispatch(
+                    setEmail(userCredential.user.email)
+                );
+
+                //guarda uid após o cadastro
+                dispatch(
+                    setUid(userCredential.user.uid)
+                );
+
+                console.log(userCredential.user.uid);
+                console.log(userCredential.user.email);
                 navigation.navigate("Home");
 
             }catch(erro){
