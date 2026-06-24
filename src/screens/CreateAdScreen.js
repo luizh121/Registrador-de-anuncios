@@ -7,12 +7,7 @@ import { styles }                 from '../../style/styles';
 import { setEmail, setUid}        from '../redux/userSlice';
 import {useSelector, useDispatch} from 'react-redux';
 
-
-
-
 export default function CreateAdScreen({navigation}){
-
-    
 
     const [titulo, setTitulo]       = useState('');
     const [descricao, setDescricao] = useState('');
@@ -28,9 +23,7 @@ export default function CreateAdScreen({navigation}){
 
             return(
                 setAviso("Preencha todos os campos.")
-            )
-
-           
+            )       
         } else if(isNaN(preco)){
                 setAviso("Preço inválido");
             }else{

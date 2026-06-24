@@ -7,8 +7,8 @@ import { login }                  from '../services/authService';
 import { useNavigation}           from '@react-navigation/native';
 import {Input}                    from '../../components/input';
 import Navibutton                 from '../../components/Navibutton';
-import { getDoc, doc } from 'firebase/firestore';
-import { db } from '../../firebaseConfig';
+import { getDoc, doc }            from 'firebase/firestore';
+import { db }                     from '../../firebaseConfig';
 
 
 export default function LoginScreen({navigation}) {

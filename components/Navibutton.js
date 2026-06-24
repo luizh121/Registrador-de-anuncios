@@ -1,12 +1,16 @@
-import { Button } from "react-native";
+import { Button, View, StyleSheet } from "react-native";
 import { styles } from "../style/styles";
 
+
+
 export default function Navibutton({title, onPress}){
-    return(      
-        <Button
-          title= {title}
-          style={styles.button}
-          onPress={onPress}
-        />
+    return(  
+        
+        <View style={styles.button}>      
+            <Button
+            title= {title}
+            onPress={onPress}
+            />
+        </View>
     )
 }

@@ -19,7 +19,8 @@ export const styles = StyleSheet.create({
     borderWidth: 2,
   },
   button:{
-    
+    padding: 5,
+    borderRadius: 50,
   },
   titulo:{
     textAlign: 'center',

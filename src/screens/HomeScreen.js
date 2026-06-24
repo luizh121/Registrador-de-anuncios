@@ -1,24 +1,59 @@
-import {View, Text}             from 'react-native';
+import {View, Text, FlatList}   from 'react-native';
 import { styles }               from '../../style/styles';
-import { useEffect }            from 'react';
+import { useEffect, useState }  from 'react';
 import { useNavigation}         from '@react-navigation/native';
 import Navibutton               from '../../components/Navibutton';
 import {collection, onSnapshot} from "firebase/firestore";
 import { db }                   from '../../firebaseConfig';
 import Card                     from '../../components/Card';
+import { setUid, setEmail, setUsername} from '../redux/userSlice';
 
 
 export default function HomeScreen({navigation}) {
 
+  const [anuncios, setAnuncios] = useState([]);
+
+
+  
+  useEffect( () => {
+    const printarAnuncio = onSnapshot(
+      collection(db, "anuncios"), 
+      (snapshot) => {
+        const lista = [];
+        
+        snapshot.forEach( (doc) =>{
+          lista.push( {
+            uid: doc.id,
+            ...doc.data(),
+          });
+        });
+  
+        setAnuncios(lista);
+      }
+    );
+    return () => printarAnuncio();
+  } , []);
+
+
+
   return (
     <View style={styles.container}>
 
-      <Navibutton  
-        title= "Registrar Anúncio (temp)"
-        onPress={() => navigation.navigate('CreateAd')}
-      />
-
-      <Card/>
+   
+        <FlatList
+          data={anuncios}
+          keyExtractor={(item) => item.uid}
+          renderItem={({item}) => (
+            <Card
+              title={item.titulo}
+              description={item.descricao}
+              user={item.nome}
+              dateTime={item.createdAt}
+              price={item.preco}
+            />
+          )}
+        />
+      
 
 
    
