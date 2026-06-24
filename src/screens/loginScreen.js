@@ -16,11 +16,12 @@ export default function LoginScreen({navigation}) {
   const dispatch                    = useDispatch();
   const [inputSenha, setInputSenha] = useState('');
   const [inputEmail, setInputEmail] = useState('');
+  const [aviso, setAviso]           = useState('');
 
   async function realizarLogin() {
 
     if(!inputEmail || !inputSenha){
-      return alert('Preencha todos os campos.');
+      setAviso('Preencha todos os campos.');
     }else{
         try{
           const userCredential = await login(inputEmail, inputSenha);
@@ -32,15 +33,26 @@ export default function LoginScreen({navigation}) {
           dispatch(
             setUid(userCredential.user.uid)
           );
-
-        console.log(userCredential.user);
-        console.log('Sucesso');
-
+    
+        setAviso('');
         navigation.navigate('Home')
 
       }catch(erro){
         console.log('Erro:', erro.code);
         console.log(erro.message);
+
+        switch(erro.code){
+          case "auth/invalid-email":
+            setAviso("Email inválido.");
+            break;
+
+          case "auth/invalid-credential":
+            setAviso("Senha/email incorreto ou não existente.");
+            break;
+          
+          default:
+            setAviso("Erro ao fazer login.");
+        }
       }      
     } 
    
@@ -48,6 +60,8 @@ export default function LoginScreen({navigation}) {
 
   return (
     <View style={styles.container}> 
+
+      <Text style={styles.aviso}>{aviso}</Text>
      
       <Input
         placeholder= 'Digite a sua senha'
