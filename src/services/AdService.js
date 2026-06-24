@@ -8,7 +8,8 @@ export async function criarAnuncio(
   descricao,
   preco,
   uid,
-  email
+  email,
+  nome,
 ) {
     return await addDoc (
 
@@ -19,6 +20,7 @@ export async function criarAnuncio(
             preco,
             uid,
             email,
+            nome,
             createdAt: serverTimestamp(),
 
         }

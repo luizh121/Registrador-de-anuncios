@@ -19,12 +19,10 @@ export default function CreateAdScreen({navigation}){
     const [preco, setPreco]         = useState('');
     const [aviso,setAviso]          = useState('');
 
-    const uid   = useSelector((state) => state.user.uid)
-    const email = useSelector((state) => state.user.email)
+    const uid   = useSelector((state) => state.user.uid);
+    const email = useSelector((state) => state.user.email);
+    const nome = useSelector((state) => state.user.username);
     
-
-
-
     async function SalvarAnuncio() {
         if(!titulo || !descricao || !preco){
 
@@ -37,7 +35,7 @@ export default function CreateAdScreen({navigation}){
                 setAviso("Preço inválido");
             }else{
             try{
-                await criarAnuncio(titulo, descricao, Number(preco), uid, email);
+                await criarAnuncio(titulo, descricao, Number(preco), uid, email, nome);
                 console.log("Sucesso")
                 navigation.goBack();
             }catch(erro){

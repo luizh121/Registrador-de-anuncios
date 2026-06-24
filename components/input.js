@@ -1,6 +1,6 @@
-import { TextInput } from "react-native";
-import { styles } from "../style/styles";
-import { useState } from "react";
+import {TextInput} from "react-native";
+import {styles}    from "../style/styles";
+import {useState}  from "react";
 
 export function Input({
     placeholder,
@@ -9,9 +9,7 @@ export function Input({
      value, 
      onChangeText, 
      secureTextEntry = false,
-    })
-
-    {
+    }) {
     return (
          <TextInput
                   style={styles.input}

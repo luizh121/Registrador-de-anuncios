@@ -2,18 +2,21 @@ import {Text, View}  from 'react-native';
 import {useState}                                    from 'react'
 import { styles }                                    from '../../style/styles';
 import {useSelector, useDispatch}                    from 'react-redux'
-import {setUid, setEmail}                            from '../redux/userSlice'
+import {setUid, setEmail, setUsername}                            from '../redux/userSlice'
 import { auth }                                      from '../services/authService';
 import { cadastrar }                                 from '../services/authService';
 import { useNavigation }                             from '@react-navigation/native';
 import Navibutton                                    from '../../components/Navibutton';
 import {Input}                                       from '../../components/input';
+import { db } from '../../firebaseConfig';
+import { doc, setDoc } from 'firebase/firestore';
 
 
 export default function SignInScreen({navigation}){
 
      const [inputEmail, setInputEmail] = useState('');
      const [inputSenha, setInputSenha] = useState('');
+     const [inputUsername, setInputUsername] = useState('');
      const [aviso, setAviso] = useState('');
     
      const dispatch = useDispatch();
@@ -21,22 +24,38 @@ export default function SignInScreen({navigation}){
 
      async function fazerCadastro() {
 
-        if(!inputEmail || !inputSenha){
-            setAviso("Preencha ambos os campos.");
+        if(!inputEmail || !inputSenha || !inputUsername){
+            setAviso("Preencha todos os campos.");
         }else{
              try{
-               const userCredential = await cadastrar(inputEmail, inputSenha);
+               const userCredential = await cadastrar(inputEmail, inputSenha); 
+               const uid = userCredential.user.uid;
+               const email = userCredential.user.email;
+               
                setAviso("");
                
                 //guarda email após o cadastro        
                 dispatch(
-                    setEmail(userCredential.user.email)
+                    setEmail(email)
                 );
 
                 //guarda uid após o cadastro
                 dispatch(
-                    setUid(userCredential.user.uid)
+                    setUid(uid)
                 );
+
+                dispatch(
+                    setUsername(inputUsername)
+                )
+
+
+                //salva os dados no firebase
+                await setDoc(
+                    doc(db, "usuarios", uid), {
+                        nome: inputUsername,
+                        email: email,
+                    }
+                )
 
                 console.log(userCredential.user.uid);
                 console.log(userCredential.user.email);
@@ -72,28 +91,34 @@ export default function SignInScreen({navigation}){
 
            <Text style={styles.aviso}>{aviso}</Text>
 
-              <Input
+           <Input
+                placeholder="Nome de usuário"
+                value={inputUsername}
+                onChangeText={setInputUsername}
+           />
+
+            <Input
+                placeholder= 'Digite seu E-mail' 
+                value={inputEmail}
+                onChangeText={setInputEmail}               
+            />
+
+            <Input
                 placeholder= 'Digite a sua senha'
                 value={inputSenha}
                 secureTextEntry = {true}
                 onChangeText={setInputSenha}
-              />
-              <Input
-                placeholder= 'Digite seu E-mail' 
-                value={inputEmail}
-                onChangeText={setInputEmail}
-                
-              />
-
-              <Navibutton
+            />
+              
+            <Navibutton
                 title= 'Cadastrar'
                 onPress={fazerCadastro}
-              />
+            />
 
-              <Navibutton
+            <Navibutton
                 title="Ir para tela de Login"
                 onPress={() => navigation.navigate('Login')}
-             />
+            />
 
 
 
