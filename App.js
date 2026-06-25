@@ -2,7 +2,7 @@ import { Provider } from 'react-redux';
 import { store }    from './src/redux/store';
 import  {HomeStack} from './src/navigation/HomeStack';
 import { AuthStack } from './src/navigation/Authstack';
-import { auth } from '@/src/firebaseConfig';
+import { auth } from './firebaseConfig';
 import { User, onAuthStateChanged } from 'firebase/auth';
 import { useEffect, useState } from 'react';
 
