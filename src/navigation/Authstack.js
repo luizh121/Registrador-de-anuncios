@@ -17,7 +17,7 @@ export function AuthStack(){
             />
 
             <Stack.Screen
-                name={'Sign In'}
+                name={'Sign-In'}
                 component={SignInScreen}
             />
 
@@ -25,7 +25,7 @@ export function AuthStack(){
                 name={'Login'}
                 component={LoginScreen}
             />
-            
+
             </Stack.Navigator>           
         </NavigationContainer>
     )

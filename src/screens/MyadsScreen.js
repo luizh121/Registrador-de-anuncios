@@ -54,6 +54,11 @@ export default function MyAdsScreen({navigation}){
                         price={item.preco}
                     />
                 )}
+
+                ListEmptyComponent={
+                    <Text style={styles.paragraph}>Nenhum anúncio registrado.</Text>
+                }
+       
         />
         </View>
     )

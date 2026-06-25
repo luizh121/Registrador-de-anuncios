@@ -16,7 +16,7 @@ export default function StartScreen({navigation}){
 
          <Navibutton
           title="Cadastrar"
-          onPress={() => navigation.navigate('SignIN')}
+          onPress={() => navigation.navigate('Sign-In')}
         />
       </View> 
     )

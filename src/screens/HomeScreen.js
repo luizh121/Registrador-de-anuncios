@@ -56,6 +56,9 @@ export default function HomeScreen({navigation}) {
               price={item.preco}
             />
           )}
+           ListEmptyComponent={
+              <Text style={styles.paragraph}>Nenhum anúncio registrado.</Text>
+            }
         />
       
 
