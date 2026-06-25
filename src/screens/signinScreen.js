@@ -59,7 +59,7 @@ export default function SignInScreen({navigation}){
 
                 console.log(userCredential.user.uid);
                 console.log(userCredential.user.email);
-                navigation.navigate("Home");
+                //navigation.navigate("Home");
 
             }catch(erro){
                 switch(erro.code){

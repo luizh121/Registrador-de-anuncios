@@ -50,7 +50,7 @@ export default function LoginScreen({navigation}) {
           );
 
         setAviso('');
-        navigation.navigate('Home');
+        //navigation.navigate('Home');
 
       }catch(erro){
         console.log('Erro:', erro.code);
