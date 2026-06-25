@@ -15,7 +15,9 @@ export default function ProfileScreen({navigation}){
     const username = useSelector(state => state.user.username )
 
     async function Sair() {
-        await(logout);
+        await logout();
+        console.log('sucesso')
+
     }
     return(
         <View style={[styles.container, {justifyContent: 'flex-start'}]}>
@@ -35,7 +37,7 @@ export default function ProfileScreen({navigation}){
 
                     <Navibutton
                         title="Ver anúncios registrados"
-                        onPress={() => navigation.navigate('CreateAd')}
+                        onPress={() => navigation.navigate('')}
                     />  
                 </View>
             
