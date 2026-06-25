@@ -14,6 +14,7 @@ import { doc, setDoc }                 from 'firebase/firestore';
 
 export default function SignInScreen({navigation}){
 
+
      const [inputEmail, setInputEmail] = useState('');
      const [inputSenha, setInputSenha] = useState('');
      const [inputUsername, setInputUsername] = useState('');

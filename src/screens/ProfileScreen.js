@@ -37,7 +37,7 @@ export default function ProfileScreen({navigation}){
 
                     <Navibutton
                         title="Ver anúncios registrados"
-                        onPress={() => navigation.navigate('')}
+                        onPress={() => navigation.navigate('MyAds')}
                     />  
                 </View>
             

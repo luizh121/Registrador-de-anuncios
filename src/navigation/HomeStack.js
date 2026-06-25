@@ -6,6 +6,7 @@ import ProfileScreen from '../screens/ProfileScreen';
 import { Image, View, Pressable} from 'react-native';
 import { styles } from '../../style/styles';
 import Profile from '../../components/Profile';
+import MyAdsScreen from '../screens/MyadsScreen';
 
 
 
@@ -34,6 +35,16 @@ export function HomeStack(){
                 <Stack.Screen
                     name={"Profile"}
                     component={ProfileScreen}
+                    options={{
+                        headerRight: () => (
+                                <Profile/>                        
+                        )
+                    }}
+                />
+
+                <Stack.Screen
+                    name={"MyAds"}
+                    component={MyAdsScreen}
                     options={{
                         headerRight: () => (
                                 <Profile/>                        
