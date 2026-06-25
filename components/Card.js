@@ -1,6 +1,6 @@
-import {styles} from "../style/styles";
+import {styles}     from "../style/styles";
 import {View, Text} from "react-native";
-import Navibutton from "./Navibutton";
+import Navibutton   from "./Navibutton";
 
 export default function Card({
     title,
@@ -24,7 +24,10 @@ export default function Card({
             
             <View style={styles.cardFooter}>
                 <Text style={styles.cardPrice}>R${price},00</Text> 
-                <Navibutton title= "Adicionar ao carrinho"/>
+                <Navibutton 
+                title= "Comprar"
+                onPress={() => alert('Tente novamente mais tarde')}
+                />
             </View>
         </View>
       

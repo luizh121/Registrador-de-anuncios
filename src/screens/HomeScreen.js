@@ -1,12 +1,12 @@
-import {View, Text, FlatList}   from 'react-native';
-import { styles }               from '../../style/styles';
-import { useEffect, useState }  from 'react';
-import { useNavigation}         from '@react-navigation/native';
-import Navibutton               from '../../components/Navibutton';
+import {View, Text, FlatList}                   from 'react-native';
+import { styles }                               from '../../style/styles';
+import { useEffect, useState }                  from 'react';
+import { useNavigation}                         from '@react-navigation/native';
+import Navibutton                               from '../../components/Navibutton';
 import {collection, onSnapshot, query, orderBy} from "firebase/firestore";
-import { db }                   from '../../firebaseConfig';
-import Card                     from '../../components/Card';
-import { setUid, setEmail, setUsername} from '../redux/userSlice';
+import { db }                                   from '../../firebaseConfig';
+import Card                                     from '../../components/Card';
+import { setUid, setEmail, setUsername}         from '../redux/userSlice';
 
 
 export default function HomeScreen({navigation}) {
@@ -14,7 +14,7 @@ export default function HomeScreen({navigation}) {
   const [anuncios, setAnuncios] = useState([]);
   const q = query(
     collection(db,"anuncios"), orderBy("createdAt", "desc")
-  );
+  ); //ordena os anúncios pela data de maneira decrescente
 
 
   

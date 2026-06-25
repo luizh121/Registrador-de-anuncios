@@ -5,9 +5,12 @@ import SignInScreen from '../screens/signinScreen';
 import HomeScreen from '../screens/HomeScreen';
 import StartScreen from '../screens/StartScreen';
 import CreateAdScreen from '../screens/CreateAdScreen';
-import { Image } from 'react-native';
-import { View } from 'react-native-web';
+import ProfileScreen from '../screens/ProfileScreen';
+import { Image, View, Pressable} from 'react-native';
 import { styles } from '../../style/styles';
+import Profile from '../../components/Profile';
+
+
 
 const Stack = createNativeStackNavigator();
 
@@ -35,15 +38,8 @@ export function HomeStack(){
                     name={"Home"}
                     component={HomeScreen}
                     options={{ //customiza o header de Home
-                        headerTitle: () => (
-
-                            <View style={styles.profile}>
-                                <Image
-                                    source={require('../../img/profileTemplate.webp')}
-                                    style={styles.profileImg}
-                                />
-                            </View>
-                           
+                        headerRight: () => (
+                            <Profile/>                        
                         )
                     }}
                 />
@@ -52,6 +48,17 @@ export function HomeStack(){
                     name={"CreateAd"}
                     component={CreateAdScreen}
                 />
+
+                <Stack.Screen
+                    name={"Profile"}
+                    component={ProfileScreen}
+                    options={{
+                        headerRight: () => (
+                                <Profile/>                        
+                        )
+                    }}
+                />
+
             </Stack.Navigator>
         </NavigationContainer>
        

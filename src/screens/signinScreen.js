@@ -1,15 +1,15 @@
-import {Text, View}  from 'react-native';
-import {useState}                                    from 'react'
-import { styles }                                    from '../../style/styles';
-import {useSelector, useDispatch}                    from 'react-redux'
-import {setUid, setEmail, setUsername}                            from '../redux/userSlice'
-import { auth }                                      from '../services/authService';
-import { cadastrar }                                 from '../services/authService';
-import { useNavigation }                             from '@react-navigation/native';
-import Navibutton                                    from '../../components/Navibutton';
-import {Input}                                       from '../../components/input';
-import { db } from '../../firebaseConfig';
-import { doc, setDoc } from 'firebase/firestore';
+import {Text, View}                    from 'react-native';
+import {useState}                      from 'react'
+import { styles }                      from '../../style/styles';
+import {useSelector, useDispatch}      from 'react-redux'
+import {setUid, setEmail, setUsername} from '../redux/userSlice'
+import { auth }                        from '../services/authService';
+import { cadastrar }                   from '../services/authService';
+import { useNavigation }               from '@react-navigation/native';
+import Navibutton                      from '../../components/Navibutton';
+import {Input}                         from '../../components/input';
+import { db }                          from '../../firebaseConfig';
+import { doc, setDoc }                 from 'firebase/firestore';
 
 
 export default function SignInScreen({navigation}){

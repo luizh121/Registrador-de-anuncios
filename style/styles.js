@@ -1,4 +1,5 @@
 import{StyleSheet} from  'react-native'
+import ProfileScreen from '../src/screens/ProfileScreen';
 
 export const styles = StyleSheet.create({
   container: {
@@ -7,6 +8,7 @@ export const styles = StyleSheet.create({
     backgroundColor: '#ecf0f1',
     padding: 8,
   },
+  
   paragraph: {
     fontSize: 18,
     padding: 8,
@@ -88,7 +90,7 @@ export const styles = StyleSheet.create({
   },
 
   profile:{
-   paddingLeft: 257
+  paddingRight: 10,
   },
 
   profileImg:{
@@ -97,5 +99,30 @@ export const styles = StyleSheet.create({
     borderRadius: 30,
     alignSelf: 'center',
 
-  }
+  },
+  
+  ProfileScreenHeader: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItens: 'center',
+    marginTop: 18,
+  },
+
+  username:{
+    fontSize: 23,
+    fontWeight: 500,
+  },
+
+  logoutButton: {
+  backgroundColor: '#D32F2F',
+  paddingVertical: 10,
+  paddingHorizontal: 18,
+  borderRadius: 8,
+},
+
+logoutText: {
+  color: '#FFF',
+  fontWeight: 'bold',
+  fontSize: 14,
+},
 });
